@@ -34,7 +34,7 @@ const SignUp = ()=>{
                             <Item regular style={ styles.formItem }>
                                 <Input
                                     placeholder="First-name..."
-                                    // value=""
+                                    value="Your first name"
                                     style={{ color: COLORS.primary }}
                                     placeholderTextColor="#02B290"
                                     selectionColor="#242B2E"
@@ -45,30 +45,7 @@ const SignUp = ()=>{
                             <Item regular style={ styles.formItem }>
                                 <Input
                                     placeholder="Last-name..."
-                                    // value=""
-                                    style={{ color: COLORS.primary }}
-                                    placeholderTextColor="#02B290"
-                                    selectionColor="#242B2E"
-                                    // ToDO - for change text...
-                                />
-                            </Item>
-                            {/* EmailId */}
-                            <Item regular style={ styles.formItem }>
-                                <Input
-                                    placeholder="Email..."
-                                    // value=""
-                                    style={{ color: COLORS.primary }}
-                                    placeholderTextColor="#02B290"
-                                    selectionColor="#242B2E"
-                                    // ToDO - for change text...
-                                />
-                            </Item>
-                            {/* Password */}
-                            <Item regular style={ styles.formItem }>
-                                <Input
-                                    placeholder="Password..."
-                                    // value=""
-                                    secureTextEntry={ true }
+                                    value="Your Last name"
                                     style={{ color: COLORS.primary }}
                                     placeholderTextColor="#02B290"
                                     selectionColor="#242B2E"
@@ -79,7 +56,7 @@ const SignUp = ()=>{
                             <Item regular style={ styles.formItem }>
                                 <Input
                                     placeholder="Contact-No..."
-                                    value=""
+                                    value="9876543210"
                                     keyboardType="numeric"
                                     style={{ color: COLORS.primary }}
                                     placeholderTextColor="#02B290"
@@ -92,7 +69,7 @@ const SignUp = ()=>{
                                 style={ styles.buttonColor }
                             // onPress={}
                             >
-                                <Text style={ styles.buttonText }>Sign-up</Text>
+                                <Text style={ styles.buttonText }>Edit profile</Text>
                             </Button>
                         </Form>
                     </ScrollView>

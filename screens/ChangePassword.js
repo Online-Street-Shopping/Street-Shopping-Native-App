@@ -25,28 +25,29 @@ const SignIn = ()=>{
                     </H3>
 
                     <Image
-                        source={ images.signInScreenWelcomeImg }
+                        source={ images.changePasswordImage }
                         // style={{ width: null, height: 150, marginTop: 30 }}
                         style={ styles.imageContainer }
                         resizeMode="contain"
                     />
 
                     <Form>
-                        {/* EmailId */}
+                        {/* Password */}
                         <Item regular style={ styles.formItem }>
                             <Input
-                                placeholder="Email..."
+                                placeholder="Password..."
                                 // value=""
+                                secureTextEntry={ true }
                                 style={{ color: COLORS.primary }}
                                 placeholderTextColor="#02B290"
                                 selectionColor="#242B2E"
                                 // ToDO - for change text...
                             />
                         </Item>
-                        {/* Password */}
+                        {/* Confirm-Password */}
                         <Item regular style={ styles.formItem }>
                             <Input
-                                placeholder="Password..."
+                                placeholder="Confirm Password..."
                                 // value=""
                                 secureTextEntry={ true }
                                 style={{ color: COLORS.primary }}
@@ -60,18 +61,8 @@ const SignIn = ()=>{
                         // onPress={}
                         style={ styles.buttonColor }
                         >
-                            <Text style={ styles.buttonText }>Sign-in</Text>
+                            <Text style={ styles.buttonText }>Change password</Text>
                         </Button>
-                        <TouchableOpacity
-                            // onPress={} //navigate to signup screen
-                            style={{ marginTop: 10 }}
-                        >
-                            <Text
-                                style={{ color: "#fff", textAlign: "center" }}
-                            >
-                                Do not have an account ?! Sign-up here...
-                            </Text>
-                        </TouchableOpacity>
                     </Form>
                 </ScrollView>
             </Container>

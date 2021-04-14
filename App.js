@@ -4,7 +4,8 @@ import SignIn from './screens/SignIn';
 import SignUp from './screens/SignUp';
 import MyHeader from "./layout/Header";
 import Profile from "./screens/Profile";
-import ChangePassword from "./screens/ChangePassword"
+import ChangePassword from "./screens/ChangePassword";
+import Tabs from "./navigation/Tabs";
 
 const App = ()=>{
 	return (
@@ -13,8 +14,11 @@ const App = ()=>{
 			{/* <SignIn /> */}
 			{/* <SignUp/> */}
 			<MyHeader/>
+			<Tabs/>
 			{/* <Profile/> */}
-			<ChangePassword/>
+			{/* <ChangePassword/> */}
+			{/* <SignUp/> */}
+			{/* <SignIn /> */}
 		</>
 	);
 };

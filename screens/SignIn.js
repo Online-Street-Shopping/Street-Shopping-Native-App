@@ -31,27 +31,28 @@ const SignIn = ()=>{
                         resizeMode="contain"
                     />
 
-                    <Form>
+                    <Form style={ styles.form }>
                         {/* EmailId */}
                         <Item regular style={ styles.formItem }>
                             <Input
                                 placeholder="Email..."
                                 // value=""
-                                style={{ color: COLORS.primary }}
-                                placeholderTextColor="#02B290"
-                                selectionColor="#242B2E"
+                                style={ styles.inputText }
+                                placeholderTextColor={ COLORS.placeHolderColor }
+                                selectionColor={ COLORS.selectionColor }
                                 // ToDO - for change text...
                             />
-                        </Item>
+                        </Item
+                        >
                         {/* Password */}
                         <Item regular style={ styles.formItem }>
                             <Input
                                 placeholder="Password..."
                                 // value=""
                                 secureTextEntry={ true }
-                                style={{ color: COLORS.primary }}
-                                placeholderTextColor="#02B290"
-                                selectionColor="#242B2E"
+                                style={ styles.inputText }
+                                placeholderTextColor={ COLORS.placeHolderColor }
+                                selectionColor={ COLORS.selectionColor }
                                 // ToDO - for change text...
                             />
                         </Item>
@@ -84,7 +85,7 @@ export default SignIn;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        width: "90%",
+        width: "100%",
         justifyContent: "flex-start",
         alignSelf: "center"
     },
@@ -95,16 +96,21 @@ const styles = StyleSheet.create({
         width: null,
         height: 150,
         marginTop: 30,
-        marginBottom: 30
+        marginBottom: 20
     },
     progress: {
         width: null,
         marginBottom: 20
     },
+    form: {
+        padding: 15,
+        margin: 15
+    },
     formItem: {
         marginBottom: 20,
         padding: 5,
         borderRadius: 10,
+        borderColor: COLORS.primary
     },
     buttonColor: {
         backgroundColor: COLORS.primary,
@@ -118,5 +124,8 @@ const styles = StyleSheet.create({
         textAlign: "center",
         marginHorizontal: 5,
         marginTop: 50
+    },
+    inputText: {
+        color: COLORS.primary,
     }
 });

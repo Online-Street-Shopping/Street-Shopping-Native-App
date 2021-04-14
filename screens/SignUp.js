@@ -10,8 +10,8 @@ import {
     Thumbnail,
     View
 } from "native-base";
-import { ScrollView, StatusBar, StyleSheet, TouchableOpacity } from 'react-native';
-import COLORS from "../constants/colors";
+import { ScrollView, StatusBar, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { COLORS, images } from "../constants/";
 
 const SignUp = ()=>{
     return (
@@ -20,24 +20,22 @@ const SignUp = ()=>{
             <Container style={ styles.container }>
                 <Content padder>
                     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-                        <View style={ styles.imageContainer }>
-                            {/* TODO chooseImage */}
-                            <TouchableOpacity 
-                            // onPress={}
-                            >
-                                <Thumbnail large source={{}} />
-                            </TouchableOpacity>
-                        </View>
+                        <Image
+                            source={ images.changePasswordImage }
+                            // style={{ width: null, height: 150, marginTop: 30 }}
+                            style={ styles.imageContainer }
+                            resizeMode="contain"
+                        />
                         {/* TODO -for progress bar while uploading images... */}
-                        <Form>
+                        <Form style={ styles.form }>
                             {/* FirstName... */}
                             <Item regular style={ styles.formItem }>
                                 <Input
                                     placeholder="First-name..."
                                     // value=""
-                                    style={{ color: COLORS.primary }}
-                                    placeholderTextColor="#02B290"
-                                    selectionColor="#242B2E"
+                                    style={ styles.inputText }
+                                    placeholderTextColor={ COLORS.placeHolderColor }
+                                    selectionColor={ COLORS.selectionColor }
                                     // ToDO - for change text...
                                 />
                             </Item>
@@ -46,9 +44,9 @@ const SignUp = ()=>{
                                 <Input
                                     placeholder="Last-name..."
                                     // value=""
-                                    style={{ color: COLORS.primary }}
-                                    placeholderTextColor="#02B290"
-                                    selectionColor="#242B2E"
+                                    style={ styles.inputText }
+                                    placeholderTextColor={ COLORS.placeHolderColor }
+                                    selectionColor={ COLORS.selectionColor }
                                     // ToDO - for change text...
                                 />
                             </Item>
@@ -57,9 +55,9 @@ const SignUp = ()=>{
                                 <Input
                                     placeholder="Email..."
                                     // value=""
-                                    style={{ color: COLORS.primary }}
-                                    placeholderTextColor="#02B290"
-                                    selectionColor="#242B2E"
+                                    style={ styles.inputText }
+                                    placeholderTextColor={ COLORS.placeHolderColor }
+                                    selectionColor={ COLORS.selectionColor }
                                     // ToDO - for change text...
                                 />
                             </Item>
@@ -69,9 +67,9 @@ const SignUp = ()=>{
                                     placeholder="Password..."
                                     // value=""
                                     secureTextEntry={ true }
-                                    style={{ color: COLORS.primary }}
-                                    placeholderTextColor="#02B290"
-                                    selectionColor="#242B2E"
+                                    style={ styles.inputText }
+                                    placeholderTextColor={ COLORS.placeHolderColor }
+                                    selectionColor={ COLORS.selectionColor }
                                     // ToDO - for change text...
                                 />
                             </Item>
@@ -81,9 +79,9 @@ const SignUp = ()=>{
                                     placeholder="Contact-No..."
                                     value=""
                                     keyboardType="numeric"
-                                    style={{ color: COLORS.primary }}
-                                    placeholderTextColor="#02B290"
-                                    selectionColor="#242B2E"
+                                    style={ styles.inputText }
+                                    placeholderTextColor={ COLORS.placeHolderColor }
+                                    selectionColor={ COLORS.selectionColor }
                                     // ToDO - for change text...
                                 />
                             </Item>
@@ -107,13 +105,19 @@ export default SignUp;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        width: "90%",
+        width: "100%",
         justifyContent: "flex-start",
-        alignSelf: "center"
+        alignSelf: "center",
+        backgroundColor: COLORS.lightTheme,
+        // backgroundColor: COLORS.darkTheme
     },
     imageContainer: {
         alignItems: "center",
-        marginVertical: 5
+        marginVertical: 5,
+        width: null,
+        height: 150,
+        marginTop: 30,
+        // marginBottom: 20
     },
     progress: {
         width: null,
@@ -123,6 +127,15 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         padding: 5,
         borderRadius: 10,
+        borderColor: COLORS.primary,
+        borderLeftWidth: 5,
+        borderRightWidth: 5,
+        // borderTopWidth: 5,
+        // borderBottomWidth: 5
+    },
+    form: {
+        padding: 10,
+        margin: 10
     },
     buttonColor: {
         backgroundColor: COLORS.primary,
@@ -130,5 +143,18 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         fontSize: 20
+    },
+    inputText: {
+        color: COLORS.primary
     }
 });
+/*
+    <View style={ styles.imageContainer }>
+                            {/* TODO chooseImage 
+                            <TouchableOpacity 
+                            // onPress={}
+                            >
+                                <Thumbnail large source={{}} />
+                            </TouchableOpacity>
+                        </View>
+*/

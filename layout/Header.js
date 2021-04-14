@@ -10,7 +10,6 @@ import {
     Title
 } from "native-base";
 import { COLORS } from "../constants/index";
-import Icon from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const MyHeader = ()=>{
@@ -19,16 +18,15 @@ const MyHeader = ()=>{
             androidStatusBarColor={ COLORS.primary }
             style={ styles.header }
         >
-            <Body>
-                <Title>
-                    <Text style={ styles.headerText }>
-                        <AntDesign
-                            name="shoppingcart"
-                            style={ styles.iconStyling }
-                        /> { "Street-Shopping" }
-                    </Text>
-                </Title>
-            </Body>
+            <Text style={ styles.headerText }>
+                <AntDesign
+                    name="shoppingcart"
+                    style={ styles.iconStyling }
+                />
+            </Text>
+            <Text style={ styles.headerText }>
+                { "Street-Shopping" }
+            </Text>
             <Right>
                 <TouchableOpacity>
                     <Text style={ styles.headerRightText }>
@@ -38,9 +36,7 @@ const MyHeader = ()=>{
                         />
                     </Text>
                 </TouchableOpacity>
-                
             </Right>
-                
         </Header>
     )
 };
@@ -49,15 +45,18 @@ export default MyHeader;
 
 const styles = StyleSheet.create({
     header: {
-        backgroundColor: COLORS.primary
+        backgroundColor: COLORS.primary,
+        height: 80
     },
     iconStyling: {
         color: "white",
-        fontSize: 35,
+        fontSize: 30,
     },
     headerText: {
-        fontSize: 20,
-        color: "white"
+        fontSize: 23,
+        alignSelf: "center",
+        color: "white",
+        margin: 5,
     },
     headerRightText: {
         color: "white",

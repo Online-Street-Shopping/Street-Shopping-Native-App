@@ -9,7 +9,7 @@ import {
     Item,
     Text,
     Thumbnail,
-    View
+    View,
 } from "native-base";
 import { ScrollView, StatusBar, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
@@ -20,10 +20,6 @@ const SignIn = ()=>{
         <>
             <Container style={ styles.container }>
                 <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-                    <H3 style={ styles.heading }>
-                        Welcome to Street-Shopping....
-                    </H3>
-
                     <Image
                         source={ images.changePasswordImage }
                         // style={{ width: null, height: 150, marginTop: 30 }}
@@ -31,16 +27,16 @@ const SignIn = ()=>{
                         resizeMode="contain"
                     />
 
-                    <Form>
+                    <Form style={ styles.form }>
                         {/* Password */}
                         <Item regular style={ styles.formItem }>
                             <Input
                                 placeholder="Password..."
                                 // value=""
                                 secureTextEntry={ true }
-                                style={{ color: COLORS.primary }}
-                                placeholderTextColor="#02B290"
-                                selectionColor="#242B2E"
+                                style={ styles.inputText }
+                                placeholderTextColor={ COLORS.placeHolderColor }
+                                selectionColor={ COLORS.selectionColor }
                                 // ToDO - for change text...
                             />
                         </Item>
@@ -50,9 +46,9 @@ const SignIn = ()=>{
                                 placeholder="Confirm Password..."
                                 // value=""
                                 secureTextEntry={ true }
-                                style={{ color: COLORS.primary }}
-                                placeholderTextColor="#02B290"
-                                selectionColor="#242B2E"
+                                style={ styles.inputText }
+                                placeholderTextColor={ COLORS.placeHolderColor }
+                                selectionColor={ COLORS.selectionColor }
                                 // ToDO - for change text...
                             />
                         </Item>
@@ -75,7 +71,7 @@ export default SignIn;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        width: "90%",
+        width: "100%",
         justifyContent: "flex-start",
         alignSelf: "center"
     },
@@ -96,6 +92,9 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         padding: 5,
         borderRadius: 10,
+        borderColor: COLORS.primary,
+        borderLeftWidth: 5,
+        borderRightWidth: 5
     },
     buttonColor: {
         backgroundColor: COLORS.primary,
@@ -109,5 +108,12 @@ const styles = StyleSheet.create({
         textAlign: "center",
         marginHorizontal: 5,
         marginTop: 50
-    }
+    },
+    inputText: {
+        color: COLORS.primary
+    },
+    form: {
+        padding: 10,
+        margin: 10
+    },
 });

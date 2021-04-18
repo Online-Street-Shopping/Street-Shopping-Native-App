@@ -6,6 +6,7 @@ import SignIn from "../screens/SignIn";
 import SignUp from "../screens/SignUp";
 import ChangePassword from "../screens/ChangePassword";
 import Profile from "../screens/Profile";
+import ProductDetails from "../screens/ProductDetails";
 
 import { Image, Text } from 'native-base';
 import { StyleSheet } from "react-native";
@@ -26,7 +27,7 @@ const Tabs = ()=>{
             >
                 <Tab.Screen
                     name="SignIn"
-                    component={ SignIn }
+                    component={ ProductDetails }
                     options={{
                         tabBarLabel: "Home",
                         tabBarIcon: ()=>(

@@ -5,7 +5,8 @@ export const COLORS = {
     selectionColor: "#242B2E",
     lightTheme: "white",
     darkTheme: "black",
-    tabSelectionColor: "#E8E8E8"
+    tabSelectionColor: "#E8E8E8",
+    hrLineColor: "#959290"
 };
 
 // const appTheme = { COLORS };

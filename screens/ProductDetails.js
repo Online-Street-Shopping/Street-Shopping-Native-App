@@ -17,6 +17,7 @@ import React from 'react';
 import { SliderBox } from "react-native-image-slider-box";
 import { images, COLORS } from "../constants/";
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import { TouchableOpacity } from 'react-native';
 
 const ProductDetails = ()=>{
     return (
@@ -29,9 +30,9 @@ const ProductDetails = ()=>{
                             autoplay={ true } 
                             circleLoop={ true }  
                             images={[
-                                images.staticProduct1,
-                                images.changePasswordImage,
-                                images.signInScreenWelcomeImg
+                                images.staticProduct2,
+                                images.staticProduct3,
+                                images.staticProduct4
                             ]}
                             style={ styles.imageShow }
                         />
@@ -40,11 +41,6 @@ const ProductDetails = ()=>{
                     <View style={ styles.productDetailsContainer }>
                         {/* Product-name */}
                         <View style={ styles.productName }>
-                            {/* <Text style={{
-                                fontSize: 30,
-                                fontWeight: "bold",
-                                margin: 10
-                            }}>Product-Name</Text> */}
                             <Text style={ styles.textStyleTitle }>Product-Name</Text>
                         </View>
                         {/* Product-rating */}
@@ -64,6 +60,90 @@ const ProductDetails = ()=>{
                         THis is description about product.THis is description about product.
                         </Text>
                     </View>
+                    <View style={{
+                        flex: 0.2,
+                        // backgroundColor: "blue",
+                        flexDirection: "row"
+                    }}>
+                        {/* Product-price */}
+                        <View style={{
+                            width: "50%"
+                        }}>
+                            <Text style={ styles.textStyleTitle }>Rs. 999/-</Text>
+                        </View>
+                        {/* Product-stock */}
+                        <View style={{
+                            width: "50%",
+                        }}>
+                            <Text style={ styles.textStyleTitle }>Qty: 99</Text>
+                        </View>
+                    </View>
+                    <View style={{ borderBottomColor: COLORS.hrLineColor , borderBottomWidth: 1, width: "95%", alignSelf: "center" }} />
+                    <View style={{
+                        flex: 0.2,
+                        // backgroundColor: "blue",
+                        flexDirection: "row"
+                    }}>
+                        {/* Product-category/sub-category */}
+                        {/* Product-shop */}
+                        <View style={{
+                            width: "100%",
+                        }}>
+                            <Text style={ styles.textStyleTitle }>Shops:</Text>
+                            <View style={{ borderBottomColor: COLORS.hrLineColor , borderBottomWidth: 1, width: "95%", alignSelf: "center" }} />
+                            <View style={{
+                                flexDirection: "row",
+                                flexWrap: "wrap"
+                            }}>
+                                <TouchableOpacity>
+                                    <Text style={{
+                                        color: "white",
+                                        backgroundColor: COLORS.primary,
+                                        margin: 10,
+                                        padding: 5,
+                                        borderRadius: 5
+                                    }}>ABC Stores</Text>
+                                </TouchableOpacity>
+
+                                <TouchableOpacity>
+                                    <Text style={{
+                                        color: "white",
+                                        backgroundColor: COLORS.primary,
+                                        margin: 10,
+                                        padding: 5,
+                                        borderRadius: 5
+                                    }}>XYZ Collections</Text>
+                                </TouchableOpacity>
+
+                                <TouchableOpacity>
+                                    <Text style={{
+                                        color: "white",
+                                        backgroundColor: COLORS.primary,
+                                        margin: 10,
+                                        padding: 5,
+                                        borderRadius: 5
+                                    }}>DEF Brothers</Text>
+                                </TouchableOpacity>
+
+                                <TouchableOpacity>
+                                    <Text style={{
+                                        color: "white",
+                                        backgroundColor: COLORS.primary,
+                                        margin: 10,
+                                        padding: 5,
+                                        borderRadius: 5
+                                    }}>RSVP Brothers Anf Co.</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    </View>
+                    <View style={{ borderBottomColor: COLORS.hrLineColor , borderBottomWidth: 1, width: "95%", alignSelf: "center" }} />
+                    <View style={ styles.productDetailsContainer }>
+                        {/* Product-reviews-heading */}
+                        <View style={ styles.productName }>
+                            <Text style={ styles.textStyleTitle }>Reviews</Text>
+                        </View>
+                    </View>
                     <View style={{ borderBottomColor: COLORS.hrLineColor , borderBottomWidth: 1, width: "95%", alignSelf: "center" }} />
                     {/* Product-reviews */}
                     <View style={ styles.reviewStyling }>
@@ -76,7 +156,7 @@ const ProductDetails = ()=>{
                                     width: "29%",
                                 }}>
                                     <Image
-                                        source={ images.staticProduct1 }
+                                        source={ images.staticProduct4 }
                                         borderRadius={120}
                                         style={{
                                             width: "100%",
@@ -111,10 +191,12 @@ const ProductDetails = ()=>{
                                     alignItems: "center",
                                     marginLeft: "5%"
                                 }}>
-                                <AntDesign
-                                    name="like2"
-                                    style={ styles.reviewSecondaryText }
-                                />
+                                <TouchableOpacity>
+                                    <AntDesign
+                                        name="like2"
+                                        style={ styles.reviewSecondaryText }
+                                    />
+                                </TouchableOpacity>
                                 <Text style={ styles.reviewSecondaryText }>
                                     15</Text>
                                 </View>
@@ -123,10 +205,12 @@ const ProductDetails = ()=>{
                                     flexDirection: "row",
                                     alignItems: "center",
                                 }}>
-                                    <AntDesign
-                                        name="dislike2"
-                                        style={ styles.reviewSecondaryText }
-                                    />
+                                    <TouchableOpacity>
+                                        <AntDesign
+                                            name="dislike2"
+                                            style={ styles.reviewSecondaryText }
+                                        />
+                                    </TouchableOpacity>
                                     <Text style={ styles.reviewSecondaryText }>5</Text>
                                 </View>
                                 <View style={{
@@ -186,10 +270,12 @@ const ProductDetails = ()=>{
                                     alignItems: "center",
                                     marginLeft: "5%"
                                 }}>
-                                <AntDesign
-                                    name="like2"
-                                    style={ styles.reviewSecondaryText }
-                                />
+                                <TouchableOpacity>
+                                    <AntDesign
+                                        name="like2"
+                                        style={ styles.reviewSecondaryText }
+                                    />
+                                </TouchableOpacity>
                                 <Text style={ styles.reviewSecondaryText }>
                                     15</Text>
                                 </View>
@@ -198,10 +284,12 @@ const ProductDetails = ()=>{
                                     flexDirection: "row",
                                     alignItems: "center",
                                 }}>
-                                    <AntDesign
-                                        name="dislike2"
-                                        style={ styles.reviewSecondaryText }
-                                    />
+                                    <TouchableOpacity>
+                                        <AntDesign
+                                            name="dislike2"
+                                            style={ styles.reviewSecondaryText }
+                                        />
+                                    </TouchableOpacity>
                                     <Text style={ styles.reviewSecondaryText }>5</Text>
                                 </View>
                                 <View style={{
@@ -238,7 +326,7 @@ const styles = StyleSheet.create({
         flexWrap: "wrap"
     },
     imageShow: {
-        height: 180,
+        height: 400,
         width: "100%",
     },
     productDetailsContainer: {
@@ -260,6 +348,7 @@ const styles = StyleSheet.create({
     productName: {
         width: "75%",
         // backgroundColor: "blue",
+        marginLeft: 10,
         alignSelf: "center"
     },
     productRating: {
@@ -270,8 +359,8 @@ const styles = StyleSheet.create({
     },
     textStyleTitle: {
         // textAlign: "center",
-        padding: 7,
-        fontSize: 30,
+        padding: 6,
+        fontSize: 25,
         fontWeight: "bold",
         color: COLORS.primary
     },
@@ -309,26 +398,3 @@ const styles = StyleSheet.create({
         padding: 2
     }
 });
-
-{/* <Card>
-                            <View style={{
-                                backgroundColor: "red",
-                                flexDirection: "column",
-                                display: 'flex'
-                            }}>
-                                <Card.Image
-                                    source={ images.staticProduct1 }
-                                    borderRadius={120}
-                                    style={{
-                                        width: "30%",
-                                        height: 100,
-
-                                    }}
-                                />
-                                <Card.FeaturedTitle style={ styles.cardUserName }>
-                                    Username
-                                </Card.FeaturedTitle>
-                            </View>
-                        </Card> */}
-
-

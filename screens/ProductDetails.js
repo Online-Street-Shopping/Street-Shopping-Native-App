@@ -12,7 +12,7 @@ import {
      StyleSheet,
      Image,
  } from "react-native";
- import { Card } from "react-native-elements";
+//  import { Card } from "react-native-elements";
 import React from 'react';
 import { SliderBox } from "react-native-image-slider-box";
 import { images, COLORS } from "../constants/";
@@ -132,7 +132,7 @@ const ProductDetails = ()=>{
                                         margin: 10,
                                         padding: 5,
                                         borderRadius: 5
-                                    }}>RSVP Brothers Anf Co.</Text>
+                                    }}>RSVP Brothers And Co.</Text>
                                 </TouchableOpacity>
                             </View>
                         </View>

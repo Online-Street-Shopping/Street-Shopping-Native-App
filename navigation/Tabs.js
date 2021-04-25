@@ -7,8 +7,8 @@ import SignUp from "../screens/SignUp";
 import ChangePassword from "../screens/ChangePassword";
 import Profile from "../screens/Profile";
 import ProductDetails from "../screens/ProductDetails";
+import Products from "../screens/Products";
 
-import { Image, Text } from 'native-base';
 import { StyleSheet } from "react-native";
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from "react-native-vector-icons/Entypo";
@@ -43,7 +43,7 @@ const Tabs = ()=>{
                 />
                 <Tab.Screen
                     name="SignUp"
-                    component={ SignUp }
+                    component={ Products }
                     options={{
                         tabBarLabel:"Search",
                         tabBarIcon: ()=>(

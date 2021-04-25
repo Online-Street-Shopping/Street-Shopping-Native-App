@@ -1,6 +1,7 @@
 export const COLORS = {
     // base colors
     primary: "#00D84A", // Shade of green
+    primaryShade: "#00e655",
     placeHolderColor: "#02B290",
     selectionColor: "#242B2E",
     lightTheme: "white",

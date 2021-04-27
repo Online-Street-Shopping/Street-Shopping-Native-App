@@ -7,12 +7,22 @@ import {
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import React from 'react';
+import React, { useState } from 'react';
 import { COLORS, images } from '../constants';
 import { Card } from "react-native-elements";
 import { TouchableOpacity } from 'react-native';
 
 const Products = ({ navigation })=>{
+
+    const [ filterArea, setFilterArea] = useState("flex");
+
+    const changeFilterArea = ()=>{
+        if( filterArea == "flex" )
+            setFilterArea("none");
+        else if( filterArea == "none" )
+            setFilterArea("flex");
+    };
+
     return (
         <>
             <ScrollView>
@@ -55,7 +65,11 @@ const Products = ({ navigation })=>{
                         <View style={{
                             width: "15%"
                         }}>
-                            <TouchableOpacity>
+                            <TouchableOpacity
+                                onPress={
+                                    ()=>{changeFilterArea()}
+                                }
+                            >
                                 <MaterialCommunityIcons
                                     name="filter-menu"
                                     style={{
@@ -66,6 +80,84 @@ const Products = ({ navigation })=>{
                                         marginRight: 10
                                     }}
                                 />
+                            </TouchableOpacity>
+                        </View>
+                    </Container>
+                    {/* for Filter options... */}
+                    <Container style={{
+                        flex: 0.1,
+                        // backgroundColor: "#D3D3D3",
+                        backgroundColor: COLORS.primaryShade,
+                        height: "auto",
+                        display: filterArea,
+                    }}>
+                        <View style={{
+                            height: "auto",
+                            // backgroundColor: "green",
+                            flexDirection: "row",
+                            flexWrap: "wrap"
+                        }}>
+                            <Text style={ styles.filterAreaTextTitle }>Category : </Text>
+                            <TouchableOpacity>
+                                <Text style={ styles.filterAreaTextBody }> Cloths </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity>
+                                <Text style={ styles.filterAreaTextBody }> Electronics </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity>
+                                <Text style={ styles.filterAreaTextBody }> Kids </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity>
+                                <Text style={ styles.filterAreaTextBody }> Ladies </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity>
+                                <Text style={ styles.filterAreaTextBody }> Mens </Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{
+                            height: "auto",
+                            // backgroundColor: "green",
+                            flexDirection: "row",
+                            flexWrap: "wrap"
+                        }}>
+                            <Text style={ styles.filterAreaTextTitle }>Shops : </Text>
+                            <TouchableOpacity>
+                                <Text style={ styles.filterAreaTextBody }> Cloths </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity>
+                                <Text style={ styles.filterAreaTextBody }> Electronics </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity>
+                                <Text style={ styles.filterAreaTextBody }> Kids </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity>
+                                <Text style={ styles.filterAreaTextBody }> Ladies </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity>
+                                <Text style={ styles.filterAreaTextBody }> Mens </Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{
+                            height: "auto",
+                            // backgroundColor: "green",
+                            flexDirection: "row",
+                            flexWrap: "wrap"
+                        }}>
+                            <Text style={ styles.filterAreaTextTitle }>Price : </Text>
+                            <TouchableOpacity>
+                                <Text style={ styles.filterAreaTextBody }> Cloths </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity>
+                                <Text style={ styles.filterAreaTextBody }> Electronics </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity>
+                                <Text style={ styles.filterAreaTextBody }> Kids </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity>
+                                <Text style={ styles.filterAreaTextBody }> Ladies </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity>
+                                <Text style={ styles.filterAreaTextBody }> Mens </Text>
                             </TouchableOpacity>
                         </View>
                     </Container>
@@ -89,9 +181,10 @@ const Products = ({ navigation })=>{
                                         </H1>
                                     </View>
                                     <View style={{ width: "25%" }}>
-                                        <H1 style={{
+                                        <Text style={{
                                             color: COLORS.primary,
-                                            fontWeight: "bold"
+                                            fontWeight: "bold",
+                                            fontSize: 25
                                         }}>
                                             4.5 <AntDesign
                                                 name="star"
@@ -99,7 +192,7 @@ const Products = ({ navigation })=>{
                                                     fontSize: 25
                                                 }}
                                             />
-                                        </H1>
+                                        </Text>
                                     </View>
                                 </View>
                                 <View style={{
@@ -165,7 +258,9 @@ const Products = ({ navigation })=>{
                                 </View>
                             </Card>
                         </TouchableOpacity>
-                        <TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={(()=> navigation.navigate("ProductDetails") )}
+                        >
                             <Card>
                                 <Card.Image
                                     source={ images.staticProduct1 }
@@ -182,9 +277,10 @@ const Products = ({ navigation })=>{
                                         </H1>
                                     </View>
                                     <View style={{ width: "25%" }}>
-                                        <H1 style={{
+                                        <Text style={{
                                             color: COLORS.primary,
-                                            fontWeight: "bold"
+                                            fontWeight: "bold",
+                                            fontSize: 25
                                         }}>
                                             4.5 <AntDesign
                                                 name="star"
@@ -192,7 +288,7 @@ const Products = ({ navigation })=>{
                                                     fontSize: 25
                                                 }}
                                             />
-                                        </H1>
+                                        </Text>
                                     </View>
                                 </View>
                                 <View style={{
@@ -351,5 +447,29 @@ const styles = StyleSheet.create({
     cardContainer: {
         flexDirection: "row",
         width: "100%",
+    },
+    filterAreaTextTitle: {
+        // color: COLORS.primary,
+        color: COLORS.lightTheme,
+        fontSize: 20,
+        fontWeight: "bold",
+        margin: 10,
+    },
+    filterAreaTextBody: {
+        color: COLORS.placeHolderColor,
+        fontSize: 18,
+        backgroundColor: COLORS.tabSelectionColor,
+        margin: 5,
+        padding: 5,
+        marginVertical: 10,
+        borderRadius: 5
     }
 });
+
+/*
+    AntDesign.ttf
+    Entypo.ttf
+    FontAwesome.ttf
+    MaterialCommunityIcons.ttf
+    MaterialIcons.ttf
+*/

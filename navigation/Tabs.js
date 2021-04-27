@@ -1,6 +1,8 @@
 import React from 'react'
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
+import "react-native-gesture-handler";
+import { createStackNavigator } from "@react-navigation/stack";
 
 import SignIn from "../screens/SignIn";
 import SignUp from "../screens/SignUp";
@@ -13,12 +15,39 @@ import { StyleSheet } from "react-native";
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from "react-native-vector-icons/Entypo";
 import { COLORS } from '../constants';
+import MyHeader from '../layout/Header';
+
+const HomeStack = createStackNavigator();
+
+const HomeStackScreen = ()=>{
+    return (
+        <HomeStack.Navigator
+            screenOptions={{
+                headerShown: false
+            }}
+        >
+            <HomeStack.Screen
+                name="Products" component={ Products }
+            />
+            <HomeStack.Screen
+                name="ProductDetails" component={ ProductDetails }
+            />
+        </HomeStack.Navigator>
+    );
+};
 
 const Tab = createBottomTabNavigator();
 
 const Tabs = ()=>{
     return (
         <NavigationContainer>
+            {/* <Stack.Navigator
+                screenOptions={{
+                    header: ()=><MyHeader />
+                }}
+            >
+                <Stack.Screen name="Home" component={Products} />
+            </Stack.Navigator> */}
             <Tab.Navigator
                 tabBarOptions={{
                     activeTintColor: COLORS.primary,
@@ -26,8 +55,8 @@ const Tabs = ()=>{
                 }}
             >
                 <Tab.Screen
-                    name="SignIn"
-                    component={ ProductDetails }
+                    name="Home"
+                    component={ HomeStackScreen }
                     options={{
                         tabBarLabel: "Home",
                         tabBarIcon: ()=>(
@@ -38,7 +67,7 @@ const Tabs = ()=>{
                                 color={ COLORS.primary }
                             />
                         ),
-                        tabBarBadge: 3
+                        tabBarBadge: 3,
                     }}
                 />
                 <Tab.Screen

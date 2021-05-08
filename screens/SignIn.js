@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     Button,
     Container, 
@@ -12,10 +12,54 @@ import {
     View
 } from "native-base";
 import { ScrollView, StatusBar, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { images, COLORS } from "../constants";
+import { images, COLORS, urls } from "../constants";
+import axios from 'axios';
+import { User } from "../apis/";
 
-const SignIn = ()=>{
+const SignIn = ({ navigation })=>{
+
+    const [ email, setEmail ] = useState("");
+    const [ password, setPassword ] = useState("");
+    const [ isSignedIn, setIsSignedIn ] = useState( false );
+    const [ user, setUser ] = useState( null );
+
+    const updateEmailIdValue = ()=>{
+        console.log(email);
+    };
+
+    const updatePassword = ()=>{
+        console.log(password);
+    };
+
+    useEffect(()=>{
+        updateEmailIdValue();
+        updatePassword();
+    }, []);
+
+    const doSignIn = async()=>{
+        // try {
+            await axios.post( urls.SIGNIN, { emailId: email, password: password } )
+            .then(( response )=>{
+                setIsSignedIn( true );
+                setUser( response.data.response );
+            })
+            .catch(( error )=>{
+                console.log( error );
+            });
+        if( isSignedIn ){
+            await AsyncStorage.setItem("@User", JSON.stringify( user ))
+            .then(( data )=> console.log( "then", data ))
+            .catch(( error )=> console.log( error ));
+            console.log( JSON.parse( await AsyncStorage.getItem("@User") ) );
+            console.log(user.firstName);
+            await alert( "Welcome, "+ user.firstName );
+            navigation.navigate("Home");
+        }
+        
+    };
+
     return (
         <>
             <Container style={ styles.container }>
@@ -25,7 +69,7 @@ const SignIn = ()=>{
                     </H3>
 
                     <Image
-                        source={ images.signInScreenWelcomeImg }
+                        source={ images.shopping }
                         // style={{ width: null, height: 150, marginTop: 30 }}
                         style={ styles.imageContainer }
                         resizeMode="contain"
@@ -36,7 +80,9 @@ const SignIn = ()=>{
                         <Item regular style={ styles.formItem }>
                             <Input
                                 placeholder="Email..."
-                                // value=""
+                                value={ email }
+                                onChangeText={ ( text )=>setEmail( text ) }
+                                onChange={ updateEmailIdValue() }
                                 style={ styles.inputText }
                                 placeholderTextColor={ COLORS.placeHolderColor }
                                 selectionColor={ COLORS.selectionColor }
@@ -48,7 +94,9 @@ const SignIn = ()=>{
                         <Item regular style={ styles.formItem }>
                             <Input
                                 placeholder="Password..."
-                                // value=""
+                                value={ password }
+                                onChangeText={ ( text )=>setPassword( text ) }
+                                onChange={ updatePassword() }
                                 secureTextEntry={ true }
                                 style={ styles.inputText }
                                 placeholderTextColor={ COLORS.placeHolderColor }
@@ -58,7 +106,7 @@ const SignIn = ()=>{
                         </Item>
                         {/* SignIp-Button */}
                         <Button regular block 
-                        // onPress={}
+                        onPress={ doSignIn }
                         style={ styles.buttonColor }
                         >
                             <Text style={ styles.buttonText }>Sign-in</Text>
@@ -123,7 +171,7 @@ const styles = StyleSheet.create({
         color: "#00D84A",
         textAlign: "center",
         marginHorizontal: 5,
-        marginTop: 50
+        marginTop: 20
     },
     inputText: {
         color: COLORS.primary,

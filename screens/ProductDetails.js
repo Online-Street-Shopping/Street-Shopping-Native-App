@@ -19,7 +19,13 @@ import { images, COLORS } from "../constants/";
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { TouchableOpacity } from 'react-native';
 
-const ProductDetails = ()=>{
+const ProductDetails = ({ route })=>{
+    console.log( "Details", route.params.product);
+
+    const product = route.params.product;
+    console.log("----", product.Media[0].FullPath );
+
+    // console.log( "Details -n ", navigation);
     return (
         <>
             <ScrollView>
@@ -30,9 +36,9 @@ const ProductDetails = ()=>{
                             autoplay={ true } 
                             circleLoop={ true }  
                             images={[
-                                images.staticProduct2,
-                                images.staticProduct3,
-                                images.staticProduct4
+                                product.Media[0].FullPath,
+                                // images.staticProduct3,
+                                // images.staticProduct4
                             ]}
                             style={ styles.imageShow }
                         />
@@ -41,7 +47,7 @@ const ProductDetails = ()=>{
                     <View style={ styles.productDetailsContainer }>
                         {/* Product-name */}
                         <View style={ styles.productName }>
-                            <Text style={ styles.textStyleTitle }>Product-Name</Text>
+                            <Text style={ styles.textStyleTitle }>{ product.productName }</Text>
                         </View>
                         {/* Product-rating */}
                         <View  style={ styles.productRating }>
@@ -54,10 +60,7 @@ const ProductDetails = ()=>{
                     {/* Product-description */}
                     <View style={ styles.productDescription }>
                         <Text style={ styles.textStyleBody }>
-                        THis is description about product.THis is description about product.
-                        THis is description about product.THis is description about product.
-                        THis is description about product.THis is description about product.
-                        THis is description about product.THis is description about product.
+                        { product.description }
                         </Text>
                     </View>
                     <View style={{
@@ -69,13 +72,13 @@ const ProductDetails = ()=>{
                         <View style={{
                             width: "50%"
                         }}>
-                            <Text style={ styles.textStyleTitle }>Rs. 999/-</Text>
+                            <Text style={ styles.textStyleTitle }>Rs. { product.price }/-</Text>
                         </View>
                         {/* Product-stock */}
                         <View style={{
                             width: "50%",
                         }}>
-                            <Text style={ styles.textStyleTitle }>Qty: 99</Text>
+                            <Text style={ styles.textStyleTitle }>Qty: { product.stock }</Text>
                         </View>
                     </View>
                     <View style={{ borderBottomColor: COLORS.hrLineColor , borderBottomWidth: 1, width: "95%", alignSelf: "center" }} />
@@ -102,41 +105,50 @@ const ProductDetails = ()=>{
                                         margin: 10,
                                         padding: 5,
                                         borderRadius: 5
-                                    }}>ABC Stores</Text>
-                                </TouchableOpacity>
-
-                                <TouchableOpacity>
-                                    <Text style={{
-                                        color: "white",
-                                        backgroundColor: COLORS.primary,
-                                        margin: 10,
-                                        padding: 5,
-                                        borderRadius: 5
-                                    }}>XYZ Collections</Text>
-                                </TouchableOpacity>
-
-                                <TouchableOpacity>
-                                    <Text style={{
-                                        color: "white",
-                                        backgroundColor: COLORS.primary,
-                                        margin: 10,
-                                        padding: 5,
-                                        borderRadius: 5
-                                    }}>DEF Brothers</Text>
-                                </TouchableOpacity>
-
-                                <TouchableOpacity>
-                                    <Text style={{
-                                        color: "white",
-                                        backgroundColor: COLORS.primary,
-                                        margin: 10,
-                                        padding: 5,
-                                        borderRadius: 5
-                                    }}>RSVP Brothers And Co.</Text>
+                                    }}>{ product.Shop.shopName }</Text>
                                 </TouchableOpacity>
                             </View>
                         </View>
                     </View>
+                    <View style={{ borderBottomColor: COLORS.hrLineColor , borderBottomWidth: 1, width: "95%", alignSelf: "center" }} />
+                    <View style={{
+                            flexDirection: "row"
+                        }}>
+                            <View style={{ width: "50%" }}>
+                                <TouchableOpacity>
+                                    <Text style={{
+                                        textAlign: "center",
+                                        color: "white",
+                                        fontWeight: "bold",
+                                        backgroundColor: COLORS.primary,
+                                        margin: 10,
+                                        padding: 5,
+                                        marginHorizontal: 5,
+                                        height: 50,
+                                        borderRadius: 5,
+                                        fontSize: 22
+                                    }}>Add to Cart</Text>
+                                </TouchableOpacity>
+                            </View>
+                            <View style={{ width: "50%" }}>
+                                <TouchableOpacity>
+                                    <Text style={{
+                                        textAlign: "center",
+                                        color: "white",
+                                        fontWeight: "bold",
+                                        backgroundColor: COLORS.primary,
+                                        margin: 10,
+                                        padding: 5,
+                                        marginHorizontal: 5,
+                                        height: 50,
+                                        borderRadius: 5,
+                                        fontSize: 22
+                                    }}>Buy now</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    <View style={{ borderBottomColor: COLORS.hrLineColor , borderBottomWidth: 1, width: "95%", alignSelf: "center" }} />
+                    {/* Product-reviews */}
                     <View style={{ borderBottomColor: COLORS.hrLineColor , borderBottomWidth: 1, width: "95%", alignSelf: "center" }} />
                     <View style={ styles.productDetailsContainer }>
                         {/* Product-reviews-heading */}
@@ -144,8 +156,6 @@ const ProductDetails = ()=>{
                             <Text style={ styles.textStyleTitle }>Reviews</Text>
                         </View>
                     </View>
-                    <View style={{ borderBottomColor: COLORS.hrLineColor , borderBottomWidth: 1, width: "95%", alignSelf: "center" }} />
-                    {/* Product-reviews */}
                     <View style={ styles.reviewStyling }>
                         <View style={ styles.reviewMainContainer }>
                             <View style={{

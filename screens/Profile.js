@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     Button,
     Container, 
@@ -11,15 +11,31 @@ import {
     View,
 } from "native-base";
 import { ScrollView, StatusBar, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { images, COLORS } from "../constants/index";
 
-const SignUp = ()=>{
+const Profile = ()=>{
+
+    const [ user, setUser ] = useState( null );
+
+    const getUser = async()=>{
+        if( await AsyncStorage.getItem("@User") ){
+            setUser( JSON.parse( await AsyncStorage.getItem("@User") ));
+            console.log(user);
+        }
+    };
+
+    useEffect(()=>{
+        getUser();
+    }, []);
+
     return (
         <>
             <StatusBar backgroundColor={ COLORS.primary } />
             <Container style={ styles.container }>
-                <Content padder>
+                { ( user ) ? (
+                    <Content padder>
                     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                         {/* <View style={ styles.imageContainer }>
                             // TODO chooseImage 
@@ -41,7 +57,7 @@ const SignUp = ()=>{
                             <Item regular style={ styles.formItem }>
                                 <Input
                                     placeholder="First-name..."
-                                    value="Your first name"
+                                    value={ user.firstName }
                                     style={ styles.inputText }
                                     placeholderTextColor={ COLORS.placeHolderColor }
                                     selectionColor={ COLORS.selectionColor }
@@ -52,7 +68,7 @@ const SignUp = ()=>{
                             <Item regular style={ styles.formItem }>
                                 <Input
                                     placeholder="Last-name..."
-                                    value="Your Last name"
+                                    value={ user.lastName }
                                     style={ styles.inputText }
                                     placeholderTextColor={ COLORS.placeHolderColor }
                                     selectionColor={ COLORS.selectionColor }
@@ -62,9 +78,8 @@ const SignUp = ()=>{
                             {/* COntact-No */}
                             <Item regular style={ styles.formItem }>
                                 <Input
-                                    placeholder="Contact-No..."
-                                    value="9876543210"
-                                    keyboardType="numeric"
+                                    disabled
+                                    placeholder={ JSON.stringify(user.contactNo) }
                                     style={ styles.inputText }
                                     placeholderTextColor={ COLORS.placeHolderColor }
                                     selectionColor={ COLORS.selectionColor }
@@ -81,12 +96,15 @@ const SignUp = ()=>{
                         </Form>
                     </ScrollView>
                 </Content>
+                ) : (
+                    <Text></Text>
+                )}
             </Container>
         </>
     )
 };
 
-export default SignUp;
+export default Profile;
 
 const styles = StyleSheet.create({
     container: {

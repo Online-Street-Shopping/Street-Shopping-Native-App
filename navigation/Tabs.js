@@ -16,6 +16,12 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from "react-native-vector-icons/Entypo";
 import { COLORS } from '../constants';
 import MyHeader from '../layout/Header';
+import ImageUploading from '../screens/ImageUploading';
+import Cart from '../screens/Cart';
+import Markets from "../screens/Markets";
+import MarketDetails from "../screens/MarketDetails";
+import ShopDetails from '../screens/ShopDetails';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const HomeStack = createStackNavigator();
 
@@ -33,6 +39,52 @@ const HomeStackScreen = ()=>{
                 name="ProductDetails" component={ ProductDetails }
             />
         </HomeStack.Navigator>
+    );
+};
+
+const MarketStack = createStackNavigator();
+
+const MarketStackScreen = ()=>{
+    return (
+        <MarketStack.Navigator
+            screenOptions={{
+                headerShown: false
+            }}
+        >
+            <MarketStack.Screen
+                name="Market" component={ Markets }
+            />
+            <MarketStack.Screen
+                name="MarketDetails" component={ MarketDetails }
+            />
+            <MarketStack.Screen
+                name="ShopDetails" component={ ShopDetails }
+            />
+        </MarketStack.Navigator>
+    );
+};
+
+const AuthStack = createStackNavigator();
+
+const AuthStackScreen = ()=>{
+    return (
+        <AuthStack.Navigator
+            screenOptions={{
+                headerShown: false
+            }}
+        >
+            {/* <AuthStack.Screen
+                name="SignIn" component={ SignIn }
+            /> */}
+            { (AsyncStorage.getItem("@User") ) ? (
+                <AuthStack.Screen
+                name="Profile" component={ Profile }
+            />
+            ) : ( <AuthStack.Screen
+                name="SignIn" component={ SignIn }
+            /> ) }
+            
+        </AuthStack.Navigator>
     );
 };
 
@@ -71,13 +123,13 @@ const Tabs = ()=>{
                     }}
                 />
                 <Tab.Screen
-                    name="SignUp"
-                    component={ Products }
+                    name="ImageUploading"
+                    component={ MarketStackScreen }
                     options={{
-                        tabBarLabel:"Search",
+                        tabBarLabel:"Markets",
                         tabBarIcon: ()=>(
-                            <AntDesign
-                                name="search1"
+                            <Entypo
+                                name="shop"
                                 style={ styles.tabIcon }
                                 size={30}
                                 color={ COLORS.primary }
@@ -86,8 +138,8 @@ const Tabs = ()=>{
                     }}
                 />
                 <Tab.Screen
-                    name="ChangePassword"
-                    component={ ChangePassword }
+                    name="Cart"
+                    component={ Cart }
                     style={ styles.tab }
                     options={{
                         tabBarLabel:"Cart",
@@ -104,7 +156,7 @@ const Tabs = ()=>{
                 />
                 <Tab.Screen
                     name="EditProfile"
-                    component={ Profile }
+                    component={ AuthStackScreen }
                     options={{
                         tabBarLabel:"Profile",
                         tabBarIcon: ()=>(

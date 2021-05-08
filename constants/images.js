@@ -4,6 +4,7 @@ const staticProduct1 = require("../assets/product-1.jpg");
 const staticProduct2 = require("../assets/product-2.png");
 const staticProduct3 = require("../assets/product-3.png");
 const staticProduct4 = require("../assets/product-4.png");
+const shopping = require("../assets/shopping.png")
 
 export default {
     signInScreenWelcomeImg,
@@ -11,5 +12,6 @@ export default {
     staticProduct1,
     staticProduct2,
     staticProduct3,
-    staticProduct4
+    staticProduct4,
+    shopping
 };
